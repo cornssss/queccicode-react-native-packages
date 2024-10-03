@@ -44,6 +44,7 @@ export interface AlertInputProps {
   onValueChanged: (v: string) => void;
   label?: string;
   inputProps?: TextInputProps;
+  error?: string;
 }
 
 const Alert: React.FC<AlertProps> = ({
@@ -92,6 +93,11 @@ const Alert: React.FC<AlertProps> = ({
                 onChangeText={inputProps.onValueChanged}
                 underlineColorAndroid={primary}
               />
+              {inputProps.error && (
+                <Text style={[{ paddingLeft: 10 }, { color: warning }]}>
+                  {inputProps.error}
+                </Text>
+              )}
             </>
           )}
           {buttons.length > 2 ? (
