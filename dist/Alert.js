@@ -15,8 +15,9 @@ const Alert = ({ title = "Alert", message, visible, buttons, primary = "#194a7a"
                 react_1.default.createElement(react_native_1.Text, { style: [styles.alertTitle, { color: text }] }, title),
                 react_1.default.createElement(react_native_1.Text, { style: [styles.alertMessage, { color: text }] }, message),
                 inputProps && (react_1.default.createElement(react_1.default.Fragment, null,
-                    inputProps.label && (react_1.default.createElement(react_native_1.Text, { style: [{ paddingLeft: 10 }, { color: secondary }] }, inputProps.label)),
-                    react_1.default.createElement(react_native_1.TextInput, Object.assign({ style: { padding: 10 } }, inputProps.inputProps, { value: inputProps.value, onChangeText: inputProps.onValueChanged, underlineColorAndroid: primary })))),
+                    inputProps.label && (react_1.default.createElement(react_native_1.Text, { style: { paddingLeft: 10, color: secondary } }, inputProps.label)),
+                    react_1.default.createElement(react_native_1.TextInput, Object.assign({ style: { padding: 10 } }, inputProps.inputProps, { value: inputProps.value, onChangeText: inputProps.onValueChanged, underlineColorAndroid: primary })),
+                    inputProps.error && (react_1.default.createElement(react_native_1.Text, { style: { paddingLeft: 10, color: warning, marginBottom: 10 } }, inputProps.error)))),
                 buttons.length > 2 ? (react_1.default.createElement(react_native_1.View, null, buttons.map((button, index) => (react_1.default.createElement(react_native_1.TouchableOpacity, { key: index, onPress: button.onPress, style: styles.buttonContainer },
                     react_1.default.createElement(react_native_1.Text, { style: [
                             styles.buttonText,

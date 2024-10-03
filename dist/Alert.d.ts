@@ -29,6 +29,7 @@ export interface AlertInputProps {
     onValueChanged: (v: string) => void;
     label?: string;
     inputProps?: TextInputProps;
+    error?: string;
 }
 declare const Alert: React.FC<AlertProps>;
 export default Alert;

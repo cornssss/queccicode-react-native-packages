@@ -82,7 +82,7 @@ const Alert: React.FC<AlertProps> = ({
           {inputProps && (
             <>
               {inputProps.label && (
-                <Text style={[{ paddingLeft: 10 }, { color: secondary }]}>
+                <Text style={{ paddingLeft: 10, color: secondary }}>
                   {inputProps.label}
                 </Text>
               )}
@@ -94,7 +94,9 @@ const Alert: React.FC<AlertProps> = ({
                 underlineColorAndroid={primary}
               />
               {inputProps.error && (
-                <Text style={[{ paddingLeft: 10 }, { color: warning }]}>
+                <Text
+                  style={{ paddingLeft: 10, color: warning, marginBottom: 10 }}
+                >
                   {inputProps.error}
                 </Text>
               )}
