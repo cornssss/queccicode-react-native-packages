@@ -2,7 +2,7 @@ import React from "react";
 import { TextInputProps } from "react-native";
 interface AlertProps {
     title?: string;
-    message: string;
+    message?: string;
     visible: boolean;
     buttons: AlertButtonProps[];
     primary?: string;

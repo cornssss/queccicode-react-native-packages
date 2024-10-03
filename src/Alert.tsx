@@ -12,7 +12,7 @@ import {
 
 interface AlertProps {
   title?: string;
-  message: string;
+  message?: string;
   visible: boolean;
   buttons: AlertButtonProps[];
 
@@ -78,7 +78,11 @@ const Alert: React.FC<AlertProps> = ({
             </View>
           )}
           <Text style={[styles.alertTitle, { color: text }]}>{title}</Text>
-          <Text style={[styles.alertMessage, { color: text }]}>{message}</Text>
+          {message && (
+            <Text style={[styles.alertMessage, { color: text }]}>
+              {message}
+            </Text>
+          )}
           {inputProps && (
             <>
               {inputProps.label && (
