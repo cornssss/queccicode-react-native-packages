@@ -1,12 +1,13 @@
 import React from "react";
 import {
+  ActivityIndicator,
   Modal,
-  View,
-  Text,
   StyleSheet,
-  TouchableOpacity,
+  Text,
   TextInput,
   TextInputProps,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 interface AlertProps {
@@ -22,6 +23,9 @@ interface AlertProps {
   warning?: string;
 
   inputProps?: AlertInputProps;
+
+  isLoading?: boolean;
+  loadingTitle?: string;
 }
 export interface AlertTextProps {
   title: string;
@@ -54,11 +58,24 @@ const Alert: React.FC<AlertProps> = ({
   warning = "#B32128",
 
   inputProps,
+
+  isLoading = false,
+  loadingTitle,
 }) => {
   return (
     <Modal transparent={true} visible={visible} animationType="fade">
       <View style={styles.overlay}>
         <View style={[styles.alertContainer, { backgroundColor: background }]}>
+          {isLoading && (
+            <View style={[styles.loading, { backgroundColor: background }]}>
+              {loadingTitle && (
+                <Text style={{ color: primary, marginBottom: 5 }}>
+                  {loadingTitle}
+                </Text>
+              )}
+              <ActivityIndicator color={primary} />
+            </View>
+          )}
           <Text style={[styles.alertTitle, { color: text }]}>{title}</Text>
           <Text style={[styles.alertMessage, { color: text }]}>{message}</Text>
           {inputProps && (
@@ -132,6 +149,7 @@ const styles = StyleSheet.create({
   alertContainer: {
     width: "80%",
     borderRadius: 10,
+    overflow: "hidden",
   },
   alertTitle: {
     textAlign: "center",
@@ -165,6 +183,14 @@ const styles = StyleSheet.create({
   twoButton: {
     paddingVertical: 15,
     flex: 1,
+  },
+  loading: {
+    position: "absolute",
+    zIndex: 1,
+    width: "100%",
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
